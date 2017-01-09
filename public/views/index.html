@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weekend 5 Live Solve</title>
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/pets.js" charset="utf-8"></script>
+  </head>
+  <body ng-app='myApp'>
+    <h1>Weekend 5 Live Solve</h1>
+    <div ng-controller='PetsController'>
+      <div>
+        <h2>Directions/Greeting</h2>
+        <p>
+          Some kinda greeting
+        </p>
+        <p>
+          How to use this page...
+        </p>
+      </div>
+      <div>
+        <h2>Add Pet</h2>
+        <input type="text" placeholder="name" ng-model='nameIn'>
+        <input type="number" placeholder="age" ng-model='ageIn'>
+        <input type="text" placeholder="Image URL" ng-model='picUrlIn'>
+        <input type="text" placeholder="Type" ng-model='typeIn'>
+        <button type="button">Add Pet</button>
+      </div>
+      <div>
+        <h2>All Pets</h2>
+        <div ng-repeat='pet in allPets'>
+          {{ pet }}
+        </div>
+      </div>
+    </div> <!-- end pets controller scope -->
+  </body>
+</html>
