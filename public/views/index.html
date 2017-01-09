@@ -3,14 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Weekend 5 Live Solve</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/pets.js" charset="utf-8"></script>
   </head>
   <body ng-app='myApp'>
     <h1>Weekend 5 Live Solve</h1>
-    <div ng-controller='PetsController' ng-init='getPets()'>
-      <div>
+    <div ng-controller='PetsController' ng-init='pageLoad();'>
+      <div ng-show='greetingView' class='container'>
         <h2>Directions/Greeting</h2>
+        <p>
+          <a href='#' ng-click='stateHandler( 1 )'>Add Pet</a>
+          <a href='#' ng-click='stateHandler( 2 )'>View Pets</a>
+        </p>
         <p>
           Some kinda greeting
         </p>
@@ -18,18 +29,32 @@
           How to use this page...
         </p>
       </div>
-      <div>
+      <div ng-show='addView' class='container'>
         <h2>Add Pet</h2>
+        <p>
+          <a href='#' ng-click='stateHandler( 0 )'>Home</a>
+          <a href='#' ng-click='stateHandler( 2 )'>View Pets</a>
+        </p>
         <input type="text" placeholder="name" ng-model='nameIn'>
         <input type="number" placeholder="age" ng-model='ageIn'>
         <input type="text" placeholder="Image URL" ng-model='picUrlIn'>
         <input type="text" placeholder="Type" ng-model='typeIn'>
         <button type="button" ng-click='addPet()'>Add Pet</button>
       </div>
-      <div>
+      <div ng-show='listView' class='container'>
         <h2>All Pets</h2>
-        <div ng-repeat='pet in allPets'>
-          {{ pet }}
+        <p>
+          <a href='#' ng-click='stateHandler( 0 )'>Home</a>
+          <a href='#' ng-click='stateHandler( 1 )'>Add Pet</a>
+        </p>
+        <div ng-repeat='pet in allPets' class='container'>
+          <p>
+            <strong>{{ pet.name }}</strong> ({{ pet.age }} yrs) <button type="button" ng-click="removePet( $index )">Remove</button>
+          </p>
+          <p>
+            [ {{ pet.type }} ]
+          </p>
+          <img ng-src='{{ pet.picUrl }}' width=100%/>
         </div>
       </div>
     </div> <!-- end pets controller scope -->
