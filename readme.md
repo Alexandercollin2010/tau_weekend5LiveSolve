@@ -9,8 +9,10 @@ stage0
 
 stage1
 ------
-* [ ] add pet
-* [ ] read pets
+* [x] declare schema/model
+* [x] add pet
+* [x] read pets
+* [x] update DOM on add and page load 
 
 stage2
 ------

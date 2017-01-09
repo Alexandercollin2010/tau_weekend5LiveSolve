@@ -8,7 +8,7 @@
   </head>
   <body ng-app='myApp'>
     <h1>Weekend 5 Live Solve</h1>
-    <div ng-controller='PetsController'>
+    <div ng-controller='PetsController' ng-init='getPets()'>
       <div>
         <h2>Directions/Greeting</h2>
         <p>
@@ -24,7 +24,7 @@
         <input type="number" placeholder="age" ng-model='ageIn'>
         <input type="text" placeholder="Image URL" ng-model='picUrlIn'>
         <input type="text" placeholder="Type" ng-model='typeIn'>
-        <button type="button">Add Pet</button>
+        <button type="button" ng-click='addPet()'>Add Pet</button>
       </div>
       <div>
         <h2>All Pets</h2>
